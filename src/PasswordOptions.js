@@ -1,13 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Options from './Options';
 const PasswordOptions = () => {
+    const [passwordValue, setpasswordValue] = useState(''); 
+    const [selectedProps, setSelectedProps] = useState([]);
+
+    const handleSelectedProps = (type) => {
+        setSelectedProps(selectedProps => [...selectedProps, type]);
+    }
+    const generatePassword = (e) => {
+        e.preventDefault();
+    } 
     return (
         <div>
-
-            <Options optionType={type} />
+            <form  onSubmit={e => generatePassword(e)} >
+                <Options setSelected={handleSelectedProps}/>
+                <button type="submit" onSubmit={e => generatePassword(e)}>Generate a new password</button>
+            </form>
             <label>
-            <input id="Numbers" type="checkbox"></input>
-            Should we include numbers in the password? (i.e: 1-9)
+                <input type="text" value={passwordValue}></input>
             </label>
         </div>
     );
