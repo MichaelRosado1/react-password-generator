@@ -5,19 +5,24 @@ const PasswordOptions = () => {
     const [selectedProps, setSelectedProps] = useState([]);
 
     const handleSelectedProps = (type) => {
-        setSelectedProps(selectedProps => [...selectedProps, type]);
+        setSelectedProps([...selectedProps, type]);
     }
     const generatePassword = (e) => {
         e.preventDefault();
+
+        setpasswordValue(() => (
+            'randomPassword'
+        ))
     } 
     return (
         <div>
-            <form  onSubmit={e => generatePassword(e)} >
+            <form >
                 <Options setSelected={handleSelectedProps}/>
                 <button type="submit" onSubmit={e => generatePassword(e)}>Generate a new password</button>
+                <button type="submit" onSubmit={e => setpasswordValue('')}>Clear password</button>
             </form>
             <label>
-                <input type="text" value={passwordValue}></input>
+                <input type="text" onChange={e => setpasswordValue(e.target.value)} value={passwordValue}></input>
             </label>
         </div>
     );
