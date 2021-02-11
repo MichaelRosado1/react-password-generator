@@ -7,6 +7,10 @@ const PasswordOptions = () => {
     const numbers = "123456789";
     const specialChars = "!@#$%^&*()_-+={[}]";
     
+    const clearPassword = () => {
+        setpasswordValue('');
+    }
+
     const getCharsToChooseFrom = () => {
         let chars = '';
         selectedProps.forEach((element) => {
@@ -48,8 +52,10 @@ const PasswordOptions = () => {
                 <Options />
                 <button type="submit">Generate a new password</button>
             </form>
-            <button type="submit">Clear password</button>
-            <label>
+            <form onSubmit={e => clearPassword(e)}>
+                <button type="submit">Clear password</button>
+            </form>
+           <label>
                 <input type="text" onChange={e => setpasswordValue(e.target.value)} value={passwordValue}></input>
             </label>
         </div>
