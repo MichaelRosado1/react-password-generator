@@ -49,7 +49,7 @@ const PasswordOptions = () => {
     return (
         <div>
             <form onSubmit={e => generatePassword(e)}>
-                <Options />
+                <Options selected={setSelectedProps}/>
                 <button type="submit">Generate a new password</button>
             </form>
             <form onSubmit={e => clearPassword(e)}>
